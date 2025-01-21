@@ -1,4 +1,4 @@
-import { Entity, Column } from 'typeorm';
+import { Column } from 'typeorm';
 export class Member {
   @Column()
   username: string;
@@ -8,8 +8,4 @@ export class Member {
   lastPayoutDue: Date;
   @Column()
   dateJoined: Date;
-  @Column()
-  totalLootSplit: number;
-  @Column()
-  totalRegearCost: number;
 }

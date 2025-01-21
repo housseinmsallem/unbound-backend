@@ -3,6 +3,4 @@ export class CreateMemberDto {
   payout: number;
   lastPayoutDue: Date;
   dateJoined: Date;
-  totalLootSplit: number;
-  totalRegearCost: number;
 }

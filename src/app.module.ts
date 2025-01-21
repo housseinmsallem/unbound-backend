@@ -11,13 +11,10 @@ import { Member } from './member/entities/member.entity';
     MemberModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
+      type: 'sqlite',
+      database: 'test.db',
       entities: [Member],
+      autoLoadEntities: true,
       synchronize: true,
       //synchronize:false in PROD VERY IMPORTANT!!!!!!!!!!!!!!!!!
     }),
