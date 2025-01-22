@@ -17,7 +17,11 @@ import * as csvParser from 'csv-parser';
 import { createReadStream } from 'fs';
 import { unlink } from 'fs/promises';
 import { diskStorage } from 'multer';
-import { parseDateFromDDMMYYYY } from 'src/helper/formatDate';
+import {
+  formatDateToMMDDYYYY,
+  parseDateFromDDMMYYYY,
+} from 'src/helper/formatDate';
+import { Console } from 'console';
 @Controller('prices')
 export class PricesController {
   constructor(private readonly pricesService: PricesService) {}
@@ -85,16 +89,16 @@ export class PricesController {
             BW_5_3: parseInt(row['BW_5_3']?.replace(/[^\d]/g, '') || '0', 10),
             BW_6_1: parseInt(row['BW_6_1']?.replace(/[^\d]/g, '') || '0', 10),
             BW_6_2: parseInt(row['BW_6_2']?.replace(/[^\d]/g, '') || '0', 10),
-            BW_lastChecked: row['BW_LastChecked']
-              ? row['BW_LastChecked']
+            BW_lastChecked: row['BW_last_Checked']
+              ? parseDateFromDDMMYYYY(row['BW_last_Checked'])
               : 'Never',
             FS_4_3: parseInt(row['FS_4_3']?.replace(/[^\d]/g, '') || '0', 10),
             FS_5_2: parseInt(row['FS_5_2']?.replace(/[^\d]/g, '') || '0', 10),
             FS_5_3: parseInt(row['FS_5_3']?.replace(/[^\d]/g, '') || '0', 10),
             FS_6_1: parseInt(row['FS_6_1']?.replace(/[^\d]/g, '') || '0', 10),
             FS_6_2: parseInt(row['FS_6_2']?.replace(/[^\d]/g, '') || '0', 10),
-            FS_lastChecked: row['FS_lastChecked']
-              ? row['FS_lastChecked']
+            FS_last_Checked: row['FS_last_Checked']
+              ? parseDateFromDDMMYYYY(row['FS_last_Checked'])
               : 'Never',
             alternativeTier: row['alternativeTier']
               ? row['alternativeTier']
