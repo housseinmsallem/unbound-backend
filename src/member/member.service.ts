@@ -4,7 +4,7 @@ import { DataSource, Repository } from 'typeorm';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
 import { Member } from './entities/member.entity';
-import { formatDateToMMDDYYYY } from './helper/formatDate';
+import { formatDateToMMDDYYYY } from '../helper/formatDate';
 @Injectable()
 export class MemberService {
   constructor(

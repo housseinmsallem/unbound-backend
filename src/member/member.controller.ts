@@ -54,6 +54,7 @@ export class MemberController {
       stream
         .pipe(csvParser())
         .on('data', (row) => {
+          console.log(row);
           members.push({
             username: row.username,
             payout: parseInt(row.payout.replace(/[^\d]/g, '') || '0', 10),
@@ -76,12 +77,12 @@ export class MemberController {
               ...member,
               formattedPayout: new Intl.NumberFormat('en-US').format(
                 member.payout,
-              ), // Format payout for display
+              ),
             }));
 
             resolve({
               message: 'Members imported successfully',
-              members: formattedMembers, // Send formatted payouts
+              members: formattedMembers,
             });
           } catch (err) {
             await unlink(file.path);

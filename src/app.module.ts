@@ -5,6 +5,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MemberModule } from './member/member.module';
 import { Member } from './member/entities/member.entity';
+import { PricesModule } from './prices/prices.module';
+import { Price } from './prices/entities/price.entity';
 
 @Module({
   imports: [
@@ -13,11 +15,12 @@ import { Member } from './member/entities/member.entity';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'test.db',
-      entities: [Member],
+      entities: [Member, Price],
       autoLoadEntities: true,
       synchronize: true,
       //synchronize:false in PROD VERY IMPORTANT!!!!!!!!!!!!!!!!!
     }),
+    PricesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
