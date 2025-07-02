@@ -7,8 +7,6 @@ import { MemberModule } from './member/member.module';
 import { Member } from './member/entities/member.entity';
 import { PricesModule } from './prices/prices.module';
 import { Price } from './prices/entities/price.entity';
-import { TrainModule } from './train/train.module';
-import { Train } from './train/entities/train.entity';
 
 @Module({
   imports: [
@@ -17,12 +15,13 @@ import { Train } from './train/entities/train.entity';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'manouba.db',
-      entities: [Train],
+      entities: [Price, Member],
       autoLoadEntities: true,
       synchronize: true,
       //synchronize:false in PROD VERY IMPORTANT!!!!!!!!!!!!!!!!!
     }),
-    TrainModule,
+    PricesModule,
+    MemberModule,
   ],
   controllers: [AppController],
   providers: [AppService],
